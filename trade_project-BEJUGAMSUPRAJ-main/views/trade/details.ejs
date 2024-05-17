@@ -1,0 +1,163 @@
+<div class="center-container">
+    <div class="form-wrapper trade-detail">
+        <div style="text-align: center;font-weight: bold;padding-bottom: 15px;font-size: 20px;">Trade Details:</div>
+        <form>
+            <input type="hidden" name="id" id="id" value="<%= trade.id %>" />
+            <table>
+                <tr>
+                    <td class="first-column">Category: </td>
+                    <td>
+                        <%= trade.topic %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Name: </td>
+                    <% if (trade.auth_user) { %>
+                        <td style="padding-right: 130px;position: relative;">
+                            <%= trade.name %>
+                            <div style="position: absolute;top: 4px;right: 4px;">
+                                <button class="button watch-btn" type="button" onclick="TradeClass.updateWatch(this);">
+                                    <% if (trade.watching) { %>
+                                        Delete from Watch List
+                                    <% } else { %>
+                                        Add To Watch List
+                                    <% } %>
+                                </button>
+                            </div>
+                        </td>
+                    <% } else { %>
+                        <td>
+                            <%= trade.name %>
+                        </td>
+                    <% } %>
+                </tr>
+                <tr>
+                    <td>Image: </td>
+                    <td>
+                        <% if (trade.avatar_url) { %>
+                            <img class="mlr-50 event-image" src="<%= trade.avatar_url %>" alt="Logo">
+                        <% } %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Status: </td>
+                    <td>
+                        <span id="status-text"><%= trade.statusText %></span>
+                        <% if (trade.auth_user && trade.status !== 'traded' && trade.created_by !== 'Me' && products.length > 0 && !trade.offerdByMe) { %>
+                            <div class="btn-wrapper mt5" id="trade-btn-container">
+                                <button class="button update-btn mt5" type="button" onclick="TradeClass.onOfferTradeClick();">Offer Trade</button>
+                            </div>
+                            <fieldset class="mt5" id="offer-container" hidden>
+                                <legend>Select your product to exchange:</legend>
+                                <select id="tradedItem">
+                                    <% for (var i = 0, len = products.length, product; i < len; i++) { 
+                                        product = products[i];
+
+                                        if (i === 0 || product.topic !== products[i - 1].topic) { %>
+                                            <optgroup label="<%= product.topic %>">
+                                        <% } %>
+                                        <option value="<%= product.id %>"><%= product.name %></option>
+                                        <% if (i === len - 1 || product.topic !== products[i + 1].topic) { %>
+                                            </optgroup>
+                                        <% } %>
+                                    <% } %>
+                                </select>
+                                <div class="btn-wrapper mt5">
+                                    <button class="button update-btn mt5" type="button" onclick="TradeClass.submitTrade();">Submit Trade</button>
+                                    <button class="button red" type="button" onclick="TradeClass.cancelTrade();">Cancel</button>
+                                </div>
+                            </fieldset>
+                        <% } %>
+                    </td>
+                </tr>
+                <% if (trade.offers && trade.offers.length > 0) { %>
+                    <tr>
+                        <td>Offers:</td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <th>Product Offered</th>
+                                    <th>Offered By</th>
+                                    <th>Status</th>
+                                </tr>
+                                <% trade.offers.forEach(item => { %>
+                                    <tr>
+                                        <td><a href="/trades/view/<%= item.offer_item %>"><%= item.offer_item_name %></a></td>
+                                        <td><%= item.owner_name %></td>
+                                        <td>
+                                            <div><%= item.statusText %></div>
+                                            <% if (trade.created_by === 'Me') { %>
+                                                <div class="btn-wrapper mt5">
+                                                    <button class="button update-btn" type="button" onclick="TradeClass.acceptOffer('<%= item.id %>');">Accept</button>
+                                                    <button class="button red" type="button" onclick="TradeClass.rejectOffer('<%= item.id %>');">Reject</button>
+                                                </div>
+                                            <% } else if (trade.current_user_id === String(item.owner)) { %>
+                                                <div class="btn-wrapper mt5">
+                                                    <button class="button red" type="button" onclick="TradeClass.rejectOffer('<%= item.id %>');">Withdraw offer</button>
+                                                </div>
+                                            <% } %>
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            </table>
+                        </td>
+                    </tr>
+                <% } %>
+                <% if (trade.trades && trade.trades.length > 0) { %>
+                    <tr>
+                        <td>Offered for:</td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <th>Offered for</th>
+                                    <th>Offered By</th>
+                                    <th>Status</th>
+                                </tr>
+                                <% trade.trades.forEach(item => { %>
+                                    <tr>
+                                        <td><a href="/trades/view/<%= item.trade_item %>"><%= item.trade_item_name %></a></td>
+                                        <td><%= item.owner_name %></td>
+                                        <td>
+                                            <div><%= item.statusText %></div>
+                                            <% if (trade.current_user_id === String(item.owner)) { %>
+                                                <div class="btn-wrapper mt5">
+                                                    <button class="button red" type="button" onclick="TradeClass.rejectOffer('<%= item.id %>');">Withdraw offer</button>
+                                                </div>
+                                            <% } else if (trade.current_user_id === item.product_owner) { %>
+                                                <div class="btn-wrapper mt5">
+                                                    <button class="button update-btn" type="button" onclick="TradeClass.acceptOffer('<%= item.id %>');">Accept</button>
+                                                    <button class="button red" type="button" onclick="TradeClass.rejectOffer('<%= item.id %>');">Reject</button>
+                                                </div>
+                                            <% } %>
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            </table>
+                        </td>
+                    </tr>
+                <% } %>
+                <tr>
+                    <td>Details: </td>
+                    <td>
+                        <%= trade.details %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Created By: </td>
+                    <td>
+                        <%= trade.created_by %>
+                    </td>
+                </tr>
+            </table>
+
+            <% if (trade.created_by === 'Me') { %>
+                <div class="btn-wrapper">
+                    <button class="button update-btn" type="button" onclick="window.location.href='/trades/edit/<%= trade.id %>';">Edit</button>
+                    <% if (trade.status !== 'traded') { %>
+                        <button class="button red" type="button" onclick="TradeClass.delete();">Delete</button>
+                    <% } %>
+                </div>
+            <% } %>
+        </form>
+    </div>
+</div>

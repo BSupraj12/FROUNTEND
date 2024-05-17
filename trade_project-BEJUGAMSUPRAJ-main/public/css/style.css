@@ -1,0 +1,226 @@
+header {
+  background-color: BLACK;
+  color: #fff;
+  height: 100px;
+  position: fixed;
+  width: 100%;
+}
+
+.subHeader {
+  background-color: BLACK;
+  border-top: 2px solid #c3c3c3;
+}
+
+footer {
+  background-color: BLACK;
+  line-height: 45px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+ol li {
+  line-height: 25px;
+}
+
+.btn-wrapper {
+  margin-top: 20px;
+}
+
+.btn-wrapper button{
+  width: 100%;
+  margin-top: 10px;
+}
+
+button.red {
+  background-color: red;
+}
+
+.mt5 {
+  margin-top: 5px !important;
+}
+
+.content {
+  padding: 110px 10px 55px 10px;
+}
+
+.tcenter {
+  text-align: center;
+}
+
+.top-row {
+  padding: 6px;
+}
+
+.fleft {
+  float: left;
+}
+
+.fright {
+  float: right;
+  line-height: 50px;
+}
+
+.logo {
+  height: 50px;
+}
+
+img {
+  max-height: 300px;
+}
+
+.clear {
+  clear: both;
+}
+
+fieldset.fleft {
+  margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: lightblue;
+}
+
+label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: lightblue;
+}
+
+label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+.form-wrapper {
+  width: 500px;
+  margin: 20px auto;
+  text-align: left;
+  padding: 20px;
+  background-color: lightgray;
+  border-radius: 10px;
+}
+
+.form-wrapper.trade-detail {
+  width: 800px;
+}
+
+.trade-detail table {
+  width: 100%;
+}
+
+/* Add CSS styling here */
+body {
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.header-left1 {
+  display: flex;
+  align-items: center;
+  height: 200px;
+  width: 600px;
+
+}
+
+button {
+  background-color: BLACK;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.header-button {
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+h1 {
+  color: blue;
+}
+
+input[type="submit"]:hover {
+  background-color: lightblue;
+}
+
+table {
+  width: 500px;
+  border-collapse: collapse;
+}
+
+table tr td, table tr th {
+  border: 1px solid #000;
+  padding: 13px;
+  text-align: left;
+}
+td.first-column {
+  width: 100px;
+}
+
+table.trade-list {
+  width: 800px;
+}
+
+table.trade-list td.listing {
+  padding: 0;
+}
+
+table.trade-list .btn-wrapper,
+table.trade-list .btn-wrapper button {
+  margin: 0;
+}
+
+.listing h3 {
+  background-color: gold;
+  padding: 8px 12px;
+  margin: 0;
+}
+
+.aboutUsContent {
+  text-decoration: none;
+  color: white;
+}
+
+.errorMsg {
+  padding: 10px;
+}
+
+.separator {
+  color: #fff;
+  padding: 0 5px;
+}
+
+.auth-user {
+  display: none;
+}
+
+.authorized .auth-user {
+  display: inline;
+}
+
+.unknown-user {
+  display: inline;
+}
+
+.authorized .unknown-user {
+  display: none;
+}
