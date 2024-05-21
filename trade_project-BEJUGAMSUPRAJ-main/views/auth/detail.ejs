@@ -1,0 +1,155 @@
+<fieldset class="center-container fleft">
+    <legend>User Details</legend>
+    <table>
+        <tr>
+            <td>Name: </td><td><%= user.name %></td>
+        </tr>
+        <tr>
+            <td>Email: </td><td><%= user.email %></td>
+        </tr>
+    </table>
+</fieldset>
+<div class="clear"></div>
+
+<div class="center-container mb-100">
+    <fieldset class="fleft">
+        <legend>List of trades</legend>
+        <% if (topics.length) { %>
+            <table class="trade-list">
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                <% topics.forEach(topic=> { %>
+                    <tr>
+                        <td class="listing" colspan="3">
+                            <h3>
+                                <%= topic %>
+                            </h3>
+                        </td>
+                    </tr>
+                    <% trades.forEach(trade=> {
+                        if (trade.topic === topic) { %>
+                            <tr>
+                                <td>
+                                    <a href="/trades/view/<%= trade.id %>">
+                                        <%= trade.name %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <%= trade.statusText %>
+                                </td>
+                                <td style="width:100px;">
+                                    <div class="btn-wrapper">
+                                        <button class="button update-btn" type="button" onclick="window.location.href='/trades/edit/<%= trade.id %>';">Edit</button>
+                                    </div>
+                                </td>
+                            </tr>
+                    <% } }); %>
+                <% }); %>
+            </table>
+        <% } else { %>
+            <p>There is no data to display.</p>
+        <% } %>
+    </fieldset>
+    <div class="clear"></div>
+    
+    <% if (user.offers.length) { %>
+        <fieldset class="fleft">
+            <legend>Offers Made by me</legend>
+            <table class="trade-list">
+                <tr>
+                    <th>Product for</th>
+                    <th>Product Owner</th>
+                    <th>Product Offered</th>
+                    <th>Status</th>
+                </tr>
+                <% user.offers.forEach(item => { %>
+                    <tr>
+                        <td><a href="/trades/view/<%= item.trade_item %>"><%= item.trade_item_name %></a></td>
+                        <td><%= item.trade_item_owner_name %></td>
+                        <td><a href="/trades/view/<%= item.offer_item %>"><%= item.offer_item_name %></a></td>
+                        <td>
+                            <div><%= item.statusText %></div>
+                            <% if (item.status === 'pending') { %>
+                                <div class="btn-wrapper mt5">
+                                    <button class="button red" type="button" onclick="TradeClass.rejectOffer('<%= item.id %>');">Withdraw offer</button>
+                                </div>
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }); %>
+            </table>
+        </fieldset>
+        <div class="clear"></div>
+    <% } %>
+
+    <% if (user.receivedOffers.length) { %>
+        <fieldset class="fleft">
+            <legend>Offers Received</legend>
+            <table class="trade-list">
+                <tr>
+                    <th>Product for</th>
+                    <th>Offered By</th>
+                    <th>Product Offered</th>
+                    <th>Status</th>
+                </tr>
+                <% user.receivedOffers.forEach(item => { %>
+                    <tr>
+                        <td><a href="/trades/view/<%= item.trade_item %>"><%= item.trade_item_name %></a></td>
+                        <td><%= item.trade_owner_name %></td>
+                        <td><a href="/trades/view/<%= item.offer_item %>"><%= item.offer_item_name %></a></td>
+                        <td>
+                            <div><%= item.statusText %></div>
+                            <% if (item.status === 'pending') { %>
+                                <div class="btn-wrapper mt5">
+                                    <button class="button update-btn" type="button" onclick="TradeClass.acceptOffer('<%= item.id %>');">Accept</button>
+                                    <button class="button red mt5" type="button" onclick="TradeClass.rejectOffer('<%= item.id %>');">Reject</button>
+                                </div>
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }); %>
+            </table>
+        </fieldset>
+        <div class="clear"></div>
+    <% } %>
+
+    <% if (user.watchList.length) { %>
+        <fieldset class="fleft">
+            <legend>Watch List</legend>
+            <table class="trade-list">
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                <% user.watchList.forEach(trade=> { %>
+                    <tr>
+                        <td>
+                            <a href="/trades/view/<%= trade.id %>">
+                                <%= trade.name %>
+                            </a>
+                        </td>
+                        <td>
+                            <%= trade.topic %>
+                        </td>
+                        <td>
+                            <%= trade.statusText %>
+                        </td>
+                        <td style="width:200px;">
+                            <div class="btn-wrapper">
+                                <button class="button watch-btn" type="button" tradeid="<%= trade.id %>" onclick="TradeClass.updateWatch(this);">
+                                    Delete from Watch List
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                <% }); %>
+            </table>
+        </fieldset>
+        <div class="clear"></div>
+    <% } %>
+</div>

@@ -1,0 +1,31 @@
+<div class="center-container">
+    <div class="form-wrapper">
+        <form class="mt-20">
+            <input type="hidden" name="id" value="<%= trade.id %>" />
+            <label for="topic">Category:</label>
+            <input type="text" id="topic" name="topic" value="<%= trade.topic %>"
+                placeholder="Enter Category.." />
+
+            <label for="name">Item Name:</label>
+            <input type="text" id="name" name="name" value="<%= trade.name %>"
+                placeholder="Enter Item Name" />
+
+            <label for="details">Details:</label>
+            <textarea id="details" rows="5" cols="65" name="details"
+                placeholder="Enter Description"><%= trade.details %></textarea><br><br>
+
+            <label for="avatar_url">Image URL</label>
+            <input type="url" name="avatar_url" value="<%= trade.avatar_url %>"
+                placeholder="Image URL" />
+
+        </form>
+        <div class="btn-wrapper">
+            <button type="button" class="button submit-btn mb-100" onclick="TradeClass.save();">
+                <% if (trade.id) { %>Update Item<% } else { %> Save Item <% } %>
+            </button>
+            <button type="button" class="button submit-btn mb-100 red" onclick="history.back();">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

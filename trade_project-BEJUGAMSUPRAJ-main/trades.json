@@ -1,0 +1,87 @@
+[{
+  "_id": {
+    "$oid": "6459a61ae374831fa381ce07"
+  },
+  "name": "samsung",
+  "topic": "Mobile",
+  "details": "good best",
+  "status": "traded",
+  "avatar_url": "https://cdn.mos.cms.futurecdn.net/u6ACPLnZhHS9fmJGE772nU.jpg",
+  "user": {
+    "$oid": "6459a58de374831fa381cde7"
+  },
+  "watching_users": [
+    "6459a693e374831fa381ce2a"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6459a6d2e374831fa381ce2e"
+  },
+  "name": "iphone6",
+  "topic": "Mobile",
+  "details": "best cond",
+  "status": "traded",
+  "avatar_url": "https://th.bing.com/th/id/R.5a12edbf7ab65c721c42d95182c473cb?rik=pHTBIUxnjMDt5Q&riu=http%3a%2f%2fstatic6.businessinsider.com%2fimage%2f55a02036eab8ea815ff7425b%2fapples-new-iphone-update-is-making-the-home-screen-obsolete-for-me.jpg&ehk=LdU3hAODKaHKY9G2JUYeh6K1C8%2bXPTboQCIPE7Uky2g%3d&risl=&pid=ImgRaw&r=0",
+  "user": {
+    "$oid": "6459a693e374831fa381ce2a"
+  },
+  "watching_users": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645adddabe5e8a866efca88b"
+  },
+  "name": "HP lap",
+  "topic": "Laptop",
+  "details": "newly used",
+  "status": "available",
+  "avatar_url": "https://th.bing.com/th/id/OIP.YHeyWW3_DmbK-EboyJ2IQQHaE9?pid=ImgDet&rs=1",
+  "user": {
+    "$oid": "6459a58de374831fa381cde7"
+  },
+  "watching_users": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645ade79be5e8a866efca899"
+  },
+  "name": "iphone13",
+  "topic": "Mobile",
+  "details": "Just new",
+  "status": "available",
+  "avatar_url": "https://www.dslr-zone.com/wp-content/uploads/2021/10/4-1-768x768.jpeg",
+  "user": {
+    "$oid": "6459a693e374831fa381ce2a"
+  },
+  "watching_users": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645adff1be5e8a866efca89e"
+  },
+  "name": "macbook",
+  "topic": "Laptop",
+  "details": "Newly bought",
+  "status": "available",
+  "avatar_url": "https://th.bing.com/th/id/OIP.jb7WVMb6Cj2QXGVGcZosYAHaHa?pid=ImgDet&rs=1",
+  "user": {
+    "$oid": "6459a693e374831fa381ce2a"
+  },
+  "watching_users": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "645ae033be5e8a866efca8a2"
+  },
+  "name": "Lenovo",
+  "topic": "Laptop",
+  "details": "Good condition",
+  "status": "available",
+  "avatar_url": "https://th.bing.com/th/id/OIP._6Fcl0y7Prv5HJOWTHwt9gHaHa?pid=ImgDet&rs=1",
+  "user": {
+    "$oid": "6459a693e374831fa381ce2a"
+  },
+  "watching_users": [],
+  "__v": 0
+}]

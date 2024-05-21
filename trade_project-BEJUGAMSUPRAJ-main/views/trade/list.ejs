@@ -1,0 +1,21 @@
+<div class="center-container mb-100">
+    <% if(topics.length){ %>
+        <% topics.forEach(topic => { %>
+        <div class="listing">
+            <h3><%= topic %></h3>
+            <ol>
+                <% if(trades.length){ %>
+                    <% trades.forEach(trade => { 
+                        if (trade.topic === topic) { %>
+                            <li><a href="/trades/view/<%= trade.id %>"><%= trade.name %></a></li>
+                        <% } });
+                    } else { %>
+                        <p>There are no connections to display.</p>
+                <% } %>
+            </ol>
+        </div>
+        <% }); %>
+    <% } else { %>
+        <p>There is no data to display.</p>
+    <% } %>
+</div>
